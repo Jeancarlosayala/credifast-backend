@@ -33,13 +33,13 @@ app.post("/login", (req, res) => {
       } else {
         res.send({
           message: "Contraseña incorrecta",
-          icon: 'danger'
+          icon: 'error'
         })
       }
     } else {
       res.send({
         message: "Este usuario no ah sido registrado",
-        icon: 'danger'
+        icon: 'error'
       })
     }
   })
@@ -51,6 +51,7 @@ app.post("/register", (req, res) => {
     if (user) {
       res.send({
         message: "Usuario existente",
+        info: 'Por favor ingresa un correo que no sea haya registrado',
         icon: 'info'
       })
     } else {
