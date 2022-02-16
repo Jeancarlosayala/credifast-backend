@@ -24,12 +24,23 @@ app.post("/login", (req, res) => {
   User.findOne({ email: email }, (err, user) => {
     if (user) {
       if (password === user.password) {
-        res.send({ message: "Login Successfull", user: user })
+        res.send({
+          message: "Has iniciado sesion correctamente",
+          info: 'Para continuar necesitamos verificar algunos campos',
+          icon: 'success',
+          user: user
+        })
       } else {
-        res.send({ message: "Password didn't match" })
+        res.send({
+          message: "Contraseña incorrecta",
+          icon: 'danger'
+        })
       }
     } else {
-      res.send({ message: "User not registered" })
+      res.send({
+        message: "Este usuario no ah sido registrado",
+        icon: 'danger'
+      })
     }
   })
 })
@@ -38,7 +49,10 @@ app.post("/register", (req, res) => {
   const { name, email, password } = req.body
   User.findOne({ email: email }, (err, user) => {
     if (user) {
-      res.send({ message: "User already registerd" })
+      res.send({
+        message: "Usuario existente",
+        icon: 'info'
+      })
     } else {
       const user = new User({
         name,
@@ -49,7 +63,7 @@ app.post("/register", (req, res) => {
         if (err) {
           res.send(err)
         } else {
-          res.send({ message: "Successfully Registered, Please login now." })
+          res.send({ message: "Registro exitoso, por favor inicia sesion." })
         }
       })
     }
