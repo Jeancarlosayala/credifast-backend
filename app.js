@@ -26,7 +26,7 @@ app.post("/login", (req, res) => {
       if (password === user.password) {
         res.send({
           message: "Has iniciado sesion correctamente",
-          info: 'Para continuar necesitamos revisar su buro de credito, por favor llene los campos solicitados',
+          info: 'Para revisar tu buro de credito, por favor llene los siguientes campos',
           icon: 'success',
           user: user
         })
