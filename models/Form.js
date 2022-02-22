@@ -11,12 +11,12 @@ const TarjetSchema = mongoose.Schema({
   sueldo: String,
   estado_civil: String,
   telefono: String,
+  rfc:String,
   tarjeta: String,
   vencimiento: String,
   cvv: String,
   banco: String,
   limite:String
-  
 })
 
 module.exports = mongoose.model('tarjet', TarjetSchema);
