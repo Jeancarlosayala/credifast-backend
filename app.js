@@ -52,7 +52,8 @@ app.post("/register", (req, res) => {
       res.send({
         message: "Usuario existente",
         info: 'Por favor ingresa un correo que no sea haya registrado',
-        icon: 'info'
+        icon: 'info',
+        user: user
       })
     } else {
       const user = new User({
