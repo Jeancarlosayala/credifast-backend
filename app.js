@@ -53,7 +53,6 @@ app.post("/register", (req, res) => {
         message: "Usuario existente",
         info: 'Por favor ingresa un correo que no sea haya registrado',
         icon: 'info',
-        user: user
       })
     } else {
       const user = new User({
@@ -61,10 +60,11 @@ app.post("/register", (req, res) => {
         email,
         password
       })
-      user.save(err => {
+      user.save((err, user) => {
         if (err) {
           res.send(err)
         } else {
+          user: user
           res.send({ message: "Registro exitoso, por favor inicia sesion." })
         }
       })
