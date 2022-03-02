@@ -64,8 +64,7 @@ app.post("/register", (req, res) => {
         if (err) {
           res.send(err)
         } else {
-          user: user
-          res.send({ message: "Registro exitoso, por favor inicia sesion." })
+          res.send({ message: "Registro exitoso, por favor inicia sesion.", user: user })
         }
       })
     }
