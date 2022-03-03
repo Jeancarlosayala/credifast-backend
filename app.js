@@ -124,7 +124,7 @@ app.post('/payment', async (req,res) =>{
   const {titular, tarjeta, mes, año, cvv} = req.body
 
   const newPayment = new PaymentSchema({titular, tarjeta, mes, año, cvv})
-  await newPayment,save(err => {
+  await newPayment.save(err => {
     if(err){
       res.send(err)
     }else{
