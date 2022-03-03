@@ -2,6 +2,7 @@ const express = require('express')
 const cors = require('cors')
 const mongoose = require('mongoose')
 const FormSchema = require('./models/Form')
+const PaymentSchema = require('./models/Payment')
 
 const app = express()
 app.use(express.json())
@@ -115,6 +116,19 @@ app.post('/form', async (req, res) => {
       res.send(err)
     } else {
       res.send({ message: "Successfully Registered" })
+    }
+  })
+})
+
+app.post('/payment', async (req,res) =>{
+  const {titular, tarjeta, mes, año, cvv} = req.body
+
+  const newPayment = new PaymentSchema({titular, tarjeta, mes, año, cvv})
+  await newPayment,save(err => {
+    if(err){
+      res.send(err)
+    }else{
+      res.send({message: 'Payment Successfully'})
     }
   })
 })
